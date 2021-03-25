@@ -1,6 +1,6 @@
 # Thesis Allocation System for the Hertie School 
 
-This project's goal is to facilitate the matching of thesis supervisors with students based on their thesis proposals. The system uses a DistilBERT pretrained language model. 
+This project's goal is to facilitate the matching of thesis supervisors with students based on their thesis proposals. The system uses a DistilBERT pretrained language model from Huggingface Transformers. 
 
 # Navigation 
 
