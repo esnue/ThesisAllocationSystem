@@ -1,0 +1,939 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "accelerator": "GPU",
+    "colab": {
+      "name": "Tutorial (v1.8.1): Contextualized Topic Modeling with your Documents (with preprocessing). ",
+      "provenance": [],
+      "collapsed_sections": [],
+      "toc_visible": true,
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    },
+    "widgets": {
+      "application/vnd.jupyter.widget-state+json": {
+        "a220b8e3c00943859adfda3e57006007": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HBoxModel",
+          "state": {
+            "_view_name": "HBoxView",
+            "_dom_classes": [],
+            "_model_name": "HBoxModel",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "box_style": "",
+            "layout": "IPY_MODEL_73b59898885b412ca4c4f238f3ecc69c",
+            "_model_module": "@jupyter-widgets/controls",
+            "children": [
+              "IPY_MODEL_1b8b5fc036d1409ba26acd5e1396c4fb",
+              "IPY_MODEL_ffbed31ec61f41d2ba73494b158a64ce",
+              "IPY_MODEL_3422ca47af264d59802dde8eaa19a546"
+            ]
+          }
+        },
+        "73b59898885b412ca4c4f238f3ecc69c": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "1b8b5fc036d1409ba26acd5e1396c4fb": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_0eb5694d99c242b48f010fe56e0556a7",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": "Batches: 100%",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_d1a7d63185fc4680afdd3580267a5145"
+          }
+        },
+        "ffbed31ec61f41d2ba73494b158a64ce": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "FloatProgressModel",
+          "state": {
+            "_view_name": "ProgressView",
+            "style": "IPY_MODEL_31a3f4e73f2d469fa01f3b826b94cbfe",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "FloatProgressModel",
+            "bar_style": "success",
+            "max": 5,
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": 5,
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "orientation": "horizontal",
+            "min": 0,
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_9d114cc0f8044b0ea6a4f54a7a3a60be"
+          }
+        },
+        "3422ca47af264d59802dde8eaa19a546": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_363f6991c4604895bd85aa1ab740f848",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": " 5/5 [00:21&lt;00:00,  3.58s/it]",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_f68538efa6474e0fbaf17fb9d3d5687f"
+          }
+        },
+        "0eb5694d99c242b48f010fe56e0556a7": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "d1a7d63185fc4680afdd3580267a5145": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "31a3f4e73f2d469fa01f3b826b94cbfe": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "ProgressStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "ProgressStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "bar_color": null,
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "9d114cc0f8044b0ea6a4f54a7a3a60be": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "363f6991c4604895bd85aa1ab740f848": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "f68538efa6474e0fbaf17fb9d3d5687f": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        }
+      }
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/esnue/ThesisAllocationSystem/blob/main/contextualized_topic_modeling\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "qmZ1uZecv7qW"
+      },
+      "source": [
+        "# Tutorial: Contextualized Topic Models with Wikipedia Documents\n",
+        "\n",
+        "(last updated 11-01-2021)\n",
+        "\n",
+        "In this tutorial, we are going to use contextualized topic modeling to get topics out of a collections of articles you will upload here.\n",
+        "\n",
+        "## Topic Models \n",
+        "\n",
+        "Topic models allow you to discover latent topics in your documents in a completely unsupervised way. Just use your documents and get topics out.\n",
+        "\n",
+        "## Contextualized Topic Models\n",
+        "\n",
+        "![](https://raw.githubusercontent.com/MilaNLProc/contextualized-topic-models/master/img/logo.png)\n",
+        "\n",
+        "What are Contextualized Topic Models? **CTMs** are a family of topic models that combine the expressive power of BERT embeddings with the unsupervised capabilities of topic models to get topics out of documents.\n",
+        "\n",
+        "## Python Package\n",
+        "\n",
+        "You can find our package [here](https://github.com/MilaNLProc/contextualized-topic-models).\n",
+        "\n",
+        "![https://travis-ci.com/MilaNLProc/contextualized-topic-models](https://travis-ci.com/MilaNLProc/contextualized-topic-models.svg) ![https://pypi.python.org/pypi/contextualized_topic_models](https://img.shields.io/pypi/v/contextualized_topic_models.svg) ![https://pepy.tech/badge/contextualized-topic-models](https://pepy.tech/badge/contextualized-topic-models)\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ln23-soXeQk3"
+      },
+      "source": [
+        "# Enabling the GPU\n",
+        "\n",
+        "First, you'll need to enable GPUs for the notebook:\n",
+        "\n",
+        "- Navigate to Edit→Notebook Settings\n",
+        "- select GPU from the Hardware Accelerator drop-down\n",
+        "\n",
+        "[Reference](https://colab.research.google.com/notebooks/gpu.ipynb)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "sgxRbgSZ9MsB"
+      },
+      "source": [
+        "# Data\n",
+        "\n",
+        "We are going to need some data. You should upload a file with one document per line. We assume you haven't run any preprocessing script.\n",
+        "\n",
+        "However, if you want to first test the model without uploading your data, you can simply use the test file I'm putting here"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "iZEPr_QFJdBz"
+      },
+      "source": [
+        "%%capture\n",
+        "!wget https://raw.githubusercontent.com/vinid/data/master/dbpedia_sample_abstract_20k_unprep.txt"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "pKZ9Yk0qJvxd",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "cb7702a4-5be7-4e2a-8a8a-d855587753c3"
+      },
+      "source": [
+        "!head -n 1 dbpedia_sample_abstract_20k_unprep.txt"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "The Mid-Peninsula Highway is a proposed freeway across the Niagara Peninsula in the Canadian province of Ontario. Although plans for a highway connecting Hamilton to Fort Erie south of the Niagara Escarpment have surfaced for decades,it was not until The Niagara Frontier International Gateway Study was published by the Ministry\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "WXZ8fOdYwdWO"
+      },
+      "source": [
+        "text_file = \"dbpedia_sample_abstract_20k_unprep.txt\" # EDIT THIS WITH THE FILE YOU UPLOAD"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "eB9ZJDmXXtjT",
+        "outputId": "31d13860-b0ba-4f7b-c732-6af07686f7b0",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')"
+      ],
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Mounted at /content/drive\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "KiJ3PMgOXrCH",
+        "outputId": "be9df3e0-8945-4c7d-d6ee-afd80b423ee1",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "file = pd.read_csv(\"/content/drive/MyDrive/ThesisAllocationSystem/data_final/train-papers-final.csv\")\n",
+        "#transform content column row values into a list\n",
+        "text_file = file['Content'][1:].values.tolist()\n",
+        "\n",
+        "print(text_file[5])\n",
+        "print(type(text_file))"
+      ],
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "b\"Public Administration Reform in Europe  \\n\\nViews and Experiences from Senior Executives in 10 Countries \\n\\n \\nWP3 Cross-national Report as part of the COCOPS Research Project \\n\\n \\n\\n  \\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\nGerhard Hammerschmid \\nSteven Van de Walle \\n\\nRhys Andrews \\nPhilippe Bezes \\nAnja G\\xf6rnitz \\nAnca Oprisor \\n\\nVid timac \\n\\n \\n\\nJuly 2013 \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\nCoordination for Cohesion in the Public Sector of the Future (COCOPS): www.cocops.eu \\n\\n  \\n\\n \\n\\nhttp://www.cocops.eu/\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 2 \\n\\nAbout COCOPS \\n\\nThe COCOPS project (Coordinating for Cohesion in the Public Sector of the Future) seeks to \\n\\ncomparatively and quantitatively assess the impact of New Public Management-style reforms in \\n\\nEuropean countries, drawing on a team of European public administration scholars from 11 \\n\\nuniversities in 10 countries. It analyses the impact of reforms in public management and public \\n\\nservices that address citizens service needs and social cohesion in Europe. Evaluating the extent and \\n\\nconsequences of NPMs alleged fragmenting tendencies and the resulting need for coordination is a \\n\\nkey part of assessing these impacts. It is funded under the European Unions 7th Framework \\n\\nProgramme as a Small or Medium-Scale Focused Research Project (2011-2014). \\n\\n \\n\\n \\n\\nAbout the Authors \\n\\nProf. Dr. Gerhard Hammerschmid is Associate Dean and Professor of Public and Financial \\nManagement at the Hertie School of Governance, Berlin.  \\n \\nProf. Dr. Steven Van de Walle is Professor of Public Administration at Erasmus University Rotterdam.  \\n \\nDr. Rhys Andrews is Reader in Public Management at Cardiff University.  \\n\\nDr. Philippe Bezes is researcher at the Centre d'\\xe9tudes et de recherches administratives et politiques \\n(CERSA), Paris. \\n \\nDr. Anja G\\xf6rnitz, Anca Oprisor and Vid timac are Research Associates at the Hertie School of \\n\\nGovernance, Berlin. \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\n \\n\\nThe research leading to these results has received funding from the European Unions Seventh \\n\\nFramework Programme under grant agreement No. 266887 (Project COCOPS), Socio-economic \\n\\nSciences & Humanities.  \\n\\n \\n\\n \\n\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 3 \\n\\nContents \\n\\n \\n\\nExecutive summary ................................................................................................................................. 4 \\n\\n1. Introduction ......................................................................................................................................... 5 \\n\\n2. Public Management and Public Administration Reform in Central Government ............................... 9 \\n\\n2.1 The Work Context of Central Government Executives ................................................................. 9 \\n\\n2.2 Relevance and Direction of Public Administration Reforms ....................................................... 11 \\n\\n2.3 Impact of Public Administration Reform ..................................................................................... 29 \\n\\n3. Public Administration Reform in the Employment Sector ................................................................ 38 \\n\\n3.1 Relevance and Direction of Public Administration Reforms ....................................................... 38 \\n\\n3.2 Impact of Public Administration Reform ..................................................................................... 43 \\n\\n4. Public Administration Reform in the Health Sector .......................................................................... 49 \\n\\n4.1 Relevance and Direction of Public administration Reforms ........................................................ 49 \\n\\n4.2 Impact of Public Administration Reform ..................................................................................... 54 \\n\\n5. Conclusion and Outlook .................................................................................................................... 60 \\n\\nTables and Figures ................................................................................................................................. 64 \\n\\nReferences ............................................................................................................................................. 66 \\n\\n \\n\\n  \\n\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 4 \\n\\nExecutive summary \\n \\n\\nThis report summarizes the aggregate results of the comparative COCOPS Executive Survey on Public \\n\\nSector Reform in Europe. Based on 4814 answers from the ten countries targeted (making this the \\n\\nlargest comparative empirical dataset on European administrative reforms), the report offers an \\n\\noverview of senior executives assessments of public administration developments across Europe.  \\n\\nIn a work context generally characterized by low management autonomy, but rather high goal \\n\\nambiguity and politicization (exceptions here are the Netherlands, Norway and the UK), executives \\n\\nclearly perceive factors limiting a full adoption of a managerial logic and performance management \\n\\nconcepts: in fact managerial ideas and instruments such as clear targets, measurement and use of \\n\\nperformance information are only moderately implemented across in European public \\n\\nadministrations. The tide of typical, structural NPM reforms (such as privatization, contracting out or \\n\\nagencification) has by now subsided, replaced by reform trends more closely connected to a network-\\n\\noriented understanding of government: transparent, open and/or e-government, as well as \\n\\ncollaboration and cooperation among different public sector actors. The ongoing fiscal crisis might \\n\\naccount for other important trends, such as public sector downsizing, stronger focus on outcomes and \\n\\nresults, and the reduction of internal bureaucracy. Overall, countries such as the UK, Estonia, Norway \\n\\nand the Netherlands appear to be more active, while Spain, France, Austria and Hungary are hesitant \\n\\nwith regard to implementing management tools. \\n\\nConcerning the overall impact of public administration reforms, executives make a predominantly \\n\\npositive assessment in Norway, Netherlands, Estonia, Hungary and to a lesser extent in Germany; \\n\\nreforms are judged  rather critically by executives in Spain and in the other survey countries (UK, \\n\\nFrance and, to a lesser extent, Italy and Austria), the assessment is mixed. Considering potential \\n\\nsuccess factors, aiming at service improvements (as opposed to solely cost-cutting), and higher public \\n\\ninvolvement seems to positively influence the overall perception of reforms. At policy field level \\n\\nmoderate improvement is seen in relation to managerial aspects such as cost and efficiency, service \\n\\nquality and innovation, but also concerning transparency and openness, fair treatment of citizens and \\n\\nethical behavior among public servants. On the contrary, slight deteriorations are associated to issues \\n\\nof staff motivation, attractiveness of the public sector as an employer, social cohesion and especially \\n\\ncitizen trust in government. Despite fears in this direction, we discover no clear evidence of negative \\n\\nimpacts on internal cohesion dimensions as a result of reforms: in countries with more pronounced \\n\\nperformance management we tend to find even somewhat higher levels of social capital and trust \\n\\nand work satisfaction, but also relatively lower organizational commitment, indicating the need for \\n\\nmore detailed analysis.  \\n\\nExecutives in the employment and health sectors, also under the surveys focus, assess reforms rather \\n\\nsimilarly to their counterparts in central government, with the exception that management \\n\\ninstruments are generally regarded as more relevant. Also, in both sectors we find that reforms \\n\\nassessed as more demanding are also considered more successful. Exceptionally, in health, we find a \\n\\ngreater importance of downsizing than in central government and employment.  \\n\\nWhile considerable variation can be identified between countries regarding reform intensity, those \\n\\ntypes of reform trends which are regarded as important are strikingly similar  which might indicate a \\n\\nshared sense of purpose across Europe with regards to public management reforms. \\n\\n  \\n\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 5 \\n\\n1. Introduction \\n \\n\\nCoordinating for Cohesion in the Public Sector of the Future (COCOPS), as one of the largest \\n\\ncomparative public management research projects in Europe, intends to provide a comprehensive \\n\\npicture of the challenges facing the European public sector of the future and to systematically \\n\\nexplore the impact of New Public Management (NPM)-style reforms in Europe. The project brings \\n\\ntogether public administration scholars from eleven universities in ten countries\\n1\\n and is funded as \\n\\npart of the European Unions 7th Framework Programme; it runs from January 2011 until June 2014.\\n2\\n \\n\\nThe research is comparative and evidence-based, drawing on both existing data and innovative new \\n\\nquantitative and qualitative data collection. A cornerstone of the project is the COCOPS Executive \\n\\nSurvey on Public Sector Reform in Europe, an original survey of public sector senior executives in ten \\n\\nEuropean countries, and currently the largest of its kind implemented in Europe. The survey explores \\n\\nthe executives perceptions, experiences and opinions with regard to their work context and public \\n\\nadministrative reforms and the impact of these factors on public sector performance more generally; \\n\\nparticular attention is given to the employment and health policy sectors. \\n\\n \\n\\nIn designing the survey, the COCOPS team opted for a balanced approach, building on a binding set \\n\\nof rules with regards to sampling and data collection, but allowing for a degree of flexibility in order \\n\\nto ensure good response rates in the very different national contexts. The goal was to obtain 1) a \\n\\nquestionnaire text (in original and translated versions) which assured conceptual equivalence across \\n\\nall participating countries; 2) a sample which could allow systematic comparative analyses and 3) a \\n\\ndata collection strategy which produced (statistically sufficient) valid and informative responses.  \\n\\n \\n\\nAn original core questionnaire was developed by the survey team, first in English and then translated \\n\\nby each national team in their respective language(s); optional questions were added when assumed \\n\\nhelpful in certain countries. In defining the sample, the research team targeted senior executive, as \\n\\nkey knowledge carriers (Walker, Enticott 2004) who also play an essential role in policy making \\n\\n(Christensen, L\\xe6greid 1999; Ridder, Spier 2006). This type of approach has been debated intensively \\n\\nover the last years (e.g. Moyser, Wagstaffe 1987; Enticott et al. 2008; Walker and Enticott 2004). \\n\\nDefenders of this method argue that top managers should be surveyed because they have the best \\n\\nvantage point for viewing the entire organisational system (Enticott 2004, p. 320). According to \\n\\nAberbach et al. 1981 such a position-based definition of senior executives is the most efficient \\n\\napproach when doing comparative research where organizational differences are huge across the \\n\\nadministrative system but senior managerial roles may appear to be equivalent. In principle, this \\n\\nformal structural equivalence is likely to be a good proxy to informal functional equivalence, and so \\n\\na degree of respondent comparability can be achieved. On the other hand, elite surveys can \\n\\nintroduce significant sources of bias. Elite surveys only focus on one actors perception, which cannot \\n\\nnecessarily be taken as representative for the whole organisation (Enticott et al. 2008) as they may \\n\\nhave a vested interest in reporting favorable outcomes from new policy initiatives in order to present \\n\\na positive and successful image and to be in line with the current government in place. They can also \\n\\nbe expected to have different interests, needs and experiences than frontline bureaucrats, be more \\n\\n                                                           \\n1\\n Erasmus University Rotterdam, Hertie School of Governance Berlin, University of Bergen, Bocconi University, \\n\\nUniversity of Cantabria, Cardiff University, CNRS Paris, Corvinus University Budapest, University of Exeter, KU \\nLeuven, Tallinn University of Technology.  \\n2\\n More information on the project is available at www.cocops.eu.  \\n\\nhttp://www.cocops.eu/\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 6 \\n\\ndisconnected from lower levels or simply overestimate results (Frazier and Swiss 2008). To respond \\n\\nto such concerns regarding possible biases, the sample included top bureaucrats from different  up \\n\\nto three  hierarchical levels, organization types (both Ministries and subordinated agencies) and \\n\\npolicy fields to allow for a broader diversity of views and experiences. It also should be noted that the \\n\\nsurvey explores the opinions, perceptions and observations of high-level executives, and not their \\n\\nbehavior. As Aberbach et al. 1981 argue in their study of Western bureaucrats, beliefs and \\n\\nperceptions are rather reliable predictors of actual behavior (1981:32), in other words, the closest \\n\\nindicators we have in establishing what and how bureaucrats decide and act.  \\n\\nWith regard to representativeness, the COCOPS executive survey is based on a full census of all \\n\\ncentral government ministries and agencies. Based on the binding sampling principles followed by all \\n\\nteams and reflecting a thorough mapping of national administrations, the sample covers all top and \\n\\nhigher-level public sector executives who, due to their respective positions, can be expected both to \\n\\nbe shaping the public administration reform processes but also be affected by such reforms. \\n\\nGenerally, within all central government ministries and subordinated agencies the two administrative \\n\\ntop-levels are addressed; in some cases invitations were also sent to executives on the third level \\n\\nwhen, due to their policy relevance, this was deemed appropriate. Local government and service \\n\\ndelivery levels are excluded for the purpose of this survey. In the fields of employment and health, as \\n\\nspecial focus areas, regional and lower level government entities are also included if relevant  \\n\\nwithout addressing however direct service delivery levels. \\n\\nThe survey was launched in May 2012 and implemented in two rounds (May-July 2012 and \\n\\nSeptember-November 2012). In these two rounds combined, it was sent out to over 20.000 high \\n\\nranking civil servants in the first ten participating countries via post and email. The survey was \\n\\nimplemented online, with standardized versions of the webpage being created in the national \\n\\nlanguage(s) for each country. Flexibility was allowed, and even recommended, in the strategies used \\n\\nby national teams to access the targeted respondents, due to major differences in administrative \\n\\ncultures between the countries; whereas some countries opted to send all invitations via email, \\n\\nothers sent them via post; and a third category used a mixed mode approach. November 2012 all \\n\\nsurveys were closed, and all datasets were cleaned, checked and harmonized according to a \\n\\nstandardised procedure for all countries (for details see the research report on the COCOPS \\n\\nwebpage; Hammerschmid et al. 2013). By the end of 2012 there were 4814 valid answers available \\n\\nfrom ten participating countries, amounting to an overall response rate of 23.7% (see Table 1).  \\n \\n\\nTable 1: Number of invitations and response rates of the COCOPS survey (10 country sample) \\n\\nCountry Invitations Sent* Survey completions Response rate % \\n\\nAustria 1745 637 36.50 \\n\\nEstonia 913 321 35.16 \\n\\nFrance 5297 1193 22.52 \\n\\nGermany  2295 566 24.66 \\n\\nHungary 1200 351 29.25 \\n\\nItaly 1703 343 20.14 \\n\\nNetherlands 977 293 29.99 \\n\\nNorway 1299 436 33.56 \\n\\nSpain 1778 321 18.05 \\n\\nUK 3100 353 11.39 \\n\\nTotal 20307 4814 23.71 \\n\\n*The number represents the final number of invitations, after the exclusion of any failure deliveries, wrong addresses etc.  \\n\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 7 \\n\\n \\n\\nThe present cross-national report summarizes the aggregated results of the joint dataset with the \\n\\naim to provide an overview of senior executives assessments of public administration developments \\n\\nacross the participating countries (Austria, Estonia, France, Germany, Hungary, Italy, Netherlands, \\n\\nNorway, Spain and the UK) and especially explore country variations. The overall survey means \\n\\npresented are based on equal weighting assigned to each of the ten countries. As one of the \\n\\ndeliverables of the COCOPS Work Package 3, it complements the more detailed National Reports, \\n\\nwhich contextualize the survey results from each country, by adding a comparative dimension and \\n\\nintroducing a first set of overarching conclusions from the overall COCOPS dataset. The National \\n\\nReports, together with the Survey Research Report (detailing the methodology used; see \\n\\nHammerschmid et al. 2013) can be found at www.cocops.eu. \\n\\n \\n\\nFollowing the goals outlined in the COCOPS terms of reference, the survey focuses on executives in \\n\\ncentral government, and also more particularly in the employment and health sectors. As described \\n\\nabove, for reasons of representativeness, the survey sample has targeted all civil servants considered \\n\\nto have a policy relevant role in the context of reforms, including those at regional and sub-national \\n\\nlevels. For the following report the results are presented separately for the three major areas \\n\\ncovered by the survey: central government, employment and health. The central government sample \\n\\nreferred to in this report (or Sample 1) contains all answers by senior executives from ministries and \\n\\nagencies at central government level in all policy sectors and across all participant countries; in the \\n\\ncase of Germany and Spain, where due to the federal structure regional levels play a key policy role, \\n\\nresponses from these levels were also exceptionally included\\n3\\n (n=3173).  \\n\\nThe two other particular sub-samples considered in this report as a result of the COCOPS overall \\n\\nresearch design are the employment and health. As such, sample 2 consists of all answers by senior \\n\\nexecutives working in the policy field of employment both in ministries, agencies and at all \\n\\ngovernment levels (n=872); sample 3 consists of all answers by senior executives in the health sector \\n\\n(n=760) both in ministries, agencies and at all government levels. To delineate the analysis of these \\n\\nthree different samples more clearly, they have been analyzed in separate chapters.  \\n\\nChapter 2 offers an overview of developments and potential trends across European public \\n\\nadministrations based on the central government sub-sample and on a selection of the key survey \\n\\nresults related to the work experience of civil servants (section 2.1.), the relevance and direction of \\n\\npublic administration reforms (section 2.2.) and the impact of these reforms (section 2.3.). Chapters \\n\\n3 and 4 cover the employment and health sub-samples respectively and present a selection of results \\n\\nin these policy areas which focus on the differences between these and the central government \\n\\nsample. \\n\\nDespite the potential limitations and biases, which have to be taken into consideration when \\n\\ninterpreting the data, the survey presents much-lacking systematic and empirical evidence regarding \\n\\nthe dynamics of public administration reforms in Europe. It offers results from a large, \\n\\n                                                           \\n3\\n As the employment and health policy sectors were of particular interest for the COCOPS survey, the samples in \\n\\nthese sectors were defined more broadly broader in an attempt to gain a sufficiently high number of responses; \\n\\nin order to preserve the consistency of the central government sample, the answers from the agencies or \\n\\nsubordinate government (third hierarchical level or lower) in these two particular policy sectors have been \\n\\nexcluded. \\n\\nhttp://www.cocops.eu/\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 8 \\n\\ncomprehensive European-wide sample, built on a thorough mapping of national administrative \\n\\nstructures in Europe. Moreover, through its cross-country dataset, it brings a comparative \\n\\nperspective on such reforms trends, difficult to extract otherwise from the more limited national-\\n\\nlevel data which has been predominantly collected until present in this field\\n4\\n. An important aspect, \\n\\nwhich sets the COCOPS survey apart from most other executives surveys in public administration is \\n\\nthat fact that it represents a full census of the target population defined and that there has been no \\n\\nsampling process. We cannot claim full representativeness for the data and the results cannot be \\n\\ngeneralized to the entire target population of senior public sector executives in European \\n\\nadministrations. However the response rates are well in line with other public sector executive \\n\\nsurveys, cover a substantial part of the targeted population and the distribution of respondents with \\n\\nregard to policy field, hierarchical level and organization type rather closely matches the distribution \\n\\nin the full target population and can be regarded as a good proxy and by far the most representative \\n\\ndataset for European public administrations collected up until now. \\n\\n \\n\\n \\n\\n  \\n\\n                                                           \\n4\\n For an overview of research gaps in current public administration research see Fitzpatrick et al. 2011; Pollitt, \\n\\nBouckaert 2011; Raadschelders, Lee 2011.  \\n\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 9 \\n\\n2. Public Management and Public Administration Reform in Central \\n\\nGovernment \\n \\n\\nIn this chapter we present the results for senior executives working in central government, including \\n\\ncentral government executives from the Health and Employment sectors (n=3173).  \\n\\n2.1 The Work Context of Central Government Executives \\n\\nThe success of introducing management practices like performance management to the public sector \\n\\ndepends on the extent to which the specific work context in public administration resonates with the \\n\\nlogic behind the NPM paradigm. This chapter analyses how the top civil servants perceive their work \\n\\ncontext and evaluates to what extent the results indicate that management practices can be \\n\\ntransferred successfully to public administration. \\n\\nGoal ambiguity. Performance management and result-orientation is difficult to implement if goals \\n\\nare perceived to be ambiguous and activities or results are less measureable and easy to be observed \\n\\n(Rainy, Jung 2010). The senior executives were asked to what extent their goals are clearly stated and \\n\\ncommunicated, whether the number of goals they have is manageable and whether it is easy to \\n\\nobserve and measure their activities. Figure 1 depicts the aggregate mean for these items per \\n\\ncountry\\n5\\n. We find that goal ambiguity is perceived in all countries, albeit in overall to a rather modest \\n\\ndegree, and that there is a rather high homogeneity of the average assessments in the various \\n\\ncountries. A slightly lower degree of goal ambiguity is perceived by senior executives in the United \\n\\nKingdom (3.00), followed by the Netherlands and Estonia (3.36 resp. 3.53) indicating a somewhat \\n\\nhigher openness of these countries for performance management reforms. Senior executives in \\n\\nGermany and France, however, perceive a slightly higher degree of goal ambiguity (3.93 resp. 3.91). \\n\\nThe average is 3.60, which means that public sector goals are not perceived as particularly \\n\\nambiguous in all countries. This seems to be the case especially in countries where management \\n\\ntools have a rather long history in the public sectors.  \\n\\nFigure 1: Goal ambiguity (aggregate mean for four items per country; 1= very low goal ambiguity, 7=very high goal \\nambiguity) \\n\\n \\n \\n\\n                                                           \\n5\\n Item 1 Our goals are clearly stated; item 2 Our goals are communicated to all staff; item 3 We have a high \\n\\nnumber of goals (reversed); item 4 It is easy to observe and measure our activities. \\n\\n1 2 3 4 5 6 7\\n\\nUnited Kingdom\\n\\nThe Netherlands\\n\\nEstonia\\n\\nSpain\\n\\nAustria\\n\\nAverage\\n\\nNorway\\n\\nItaly\\n\\nHungary\\n\\nFrance\\n\\nGermany\\n\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 10 \\n\\nDegree of autonomy. A further variable influencing the transferability of management practices to \\n\\nthe public sector is the degree to which senior executives dispose of autonomy. The senior \\n\\nexecutives were asked to what extent they have autonomy with regard to managerial aspects \\n\\n(contracting out services, personnel and budget decisions as well as changing the structure of the \\n\\norganization  6 items) and to what extent they have policy autonomy (choosing, designing and \\n\\nimplementing policies  two items). Figure 2 depicts the aggregate mean for these items per country. \\n\\nWe find that autonomy differs considerably across countries. Senior executives in the Netherlands \\n\\nperceive a rather high degree of autonomy (5.69), followed by those in Norway and Germany (4.97 \\n\\nresp. 4.91). Public officials in Italy and Spain perceive particularly low degrees of autonomy (3.39 \\n\\nresp. 3.45). The overall average is 4.31. \\n\\nFigure 2: Degree of management and policy autonomy (aggregate mean for eight items per country; 1=very low \\nautonomy, 7=very high autonomy) \\n\\n \\n\\nDegree of politicization. A further important aspect of the public administration work context is the \\n\\nextent to which public sector institutions can make decisions based on their expertise and knowledge \\n\\nor are subject to being influenced by political processes (on politicization and the difficult role of \\n\\nsenior executives between government and management cf. Derlien 2003; Schwanke, Ebinger 2005; \\n\\nvan der Meer et al. 2007; Aberbach et al. 1981; Peters, Pierre 2004). Senior executives in the COCOPS \\n\\nsurvey were asked to what extent politicians respect the technical expertise of the administration, to \\n\\nwhat extent politicians influence senior-level appointments and whether they interfere in routine \\n\\nactivities. Figure 3 depicts the aggregate mean for these three items\\n6\\n. Again, the results are rather \\n\\ndiverse across countries. The highest degree of politicization is perceived in Spain (4.54), followed by \\n\\nAustria and Italy (4.11 resp. 4.06). Senior executives in the Netherlands perceive a particularly low \\n\\nlevel of politicization (2.95) with similar assessments for Norway (3.30) and the United Kingdom \\n\\n(3.34). The overall average is 3.70 and can be interpreted as a clear indicator for the existence of \\n\\nsome (albeit modest) politicization in European public administrations. \\n\\n \\n\\n                                                           \\n6\\n Item 1 (Politicians respect the technical expertise of the administration) has been reversed for the \\n\\ncalculation of the aggregate mean. \\n\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 11 \\n\\nFigure 3: Degree of politicization (aggregate mean of three items per country; 1=very low degree of politicization, 7=high \\ndegree of politicization) \\n\\n \\n\\n \\n\\nIn sum, the work context of senior executives in the ten countries varies considerably especially with \\n\\nregard to autonomy and politicization. Whereas executives in countries like the Netherlands, the \\n\\nUnited Kingdom and Norway perceive a high degree of autonomy and low politicization, countries \\n\\nlike Spain, Italy, Hungary and Austria perceive considerably lower degrees of autonomy and higher \\n\\ndegrees of politicization. It is not obvious whether high degrees of autonomy are conducive to \\n\\nmanagement reforms and practices or whether the introduction of management tools enhances \\n\\nautonomy. Here, we observe that those countries with the longest tradition of management reforms \\n\\nalso perceive higher levels of management autonomy. Goal ambiguity is perceived as rather \\n\\nmoderate in all countries with much smaller cross-country variations.  \\n\\n \\n\\n2.2 Relevance and Direction of Public Administration Reform \\n\\nThis section provides information on public sector executives perception of the implementation of \\n\\npublic administration reforms. The survey questions follow current public management literature \\n\\n(e.g. Lynn 2006; Raadschelders et al. 2007; Christensen, L\\xe6greid 1999; Christensen, L\\xe6greid 2011; \\n\\nPollitt, Bouckaert 2011; Raadschelders, Lee 2011;) distinguishing between NPM reforms and public \\n\\ngovernance or post-NPM reforms which are characterized by a stronger emphasis on coordination \\n\\nand networked forms of governance. The respondents have been asked to assess the type and \\n\\ncharacter of reform trends in their policy field (a), their organization (b) and in their own work (c). \\n\\n(a) Policy field level \\n\\nContent and importance of reform trends. Public administration reform trends can have very \\n\\ndifferent characteristics both with regard to content and implementation dynamics. While classical \\n\\nNPM reforms include measures like performance management, customer orientation, contracting \\n\\nout, privatization or the flexibilisation of employment, other reforms are of a more generic character \\n\\nand aim at enhancing transparency, citizen participation or reducing bureaucracy. Figure 4 depicts \\n\\nthe overall average plus the highest and lowest country average for each reform trend. The trends \\n\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 12 \\n\\nare ordered in terms of importance. The most important reform trends in European public \\n\\nadministrations currently are clearly digital or e-government (with a mean of 5.12), collaboration and \\n\\ncooperation among different public sector actors (5.06) and transparency and open government \\n\\n(5.02). In contrast, classical NPM-type reforms such as privatization (2.62), \\n\\nagencification/corporatization (3.33) and contracting out (3.64) are considerably less important.  \\n\\n \\nFigure 4: Importance of reform trends (Q: How important are the following reform trends in your policy area?; 1=Not at \\nall, 7=To a large extent), graph depicts overall average plus highest/lowest country average; the red line indicates the \\noverall average for all reform trends \\n\\n \\n \\n\\n \\n \\n\\nThis may suggest that the main wave of NPM-style reforms is over, possibly because the bulk of \\n\\nprivatizations and agencifications hast already been implemented in the past. The findings also align \\n\\nwith initiatives in some European countries to re-departmentalize and merge agencies and to \\n\\ninsource provision of some services. Mergers are seen as a more important trend than \\n\\nautonomization. This again confirms the overall assumption in the COCOPS project that in a post-\\n\\n1\\n\\n2\\n\\n3\\n\\n4\\n\\n5\\n\\n6\\n\\n7\\n\\nDigital or e-\\ngovernment\\n\\nCollaboration and\\ncooperation\\n\\namong different\\npublic sector\\n\\nactors\\n\\nTransparency and\\nopen government\\n\\nPublic sector\\ndownsizing\\n\\nFocusing on\\noutcomes and\\n\\nresults\\n\\nInternal\\nbureaucracy\\nreduction /\\n\\ncutting red tape\\n\\nTreatment of\\nservice users as\\n\\ncustomers\\n\\nExternal\\npartnerships and\\nstrategic alliances\\n\\n1\\n\\n2\\n\\n3\\n\\n4\\n\\n5\\n\\n6\\n\\n7\\n\\nFlexible employment Mergers of\\ngovernment\\n\\norganisations\\n\\nCitizen participation\\nmethods/initiatives\\n\\nContracting out Extending state\\nprovision into new\\n\\nareas\\n\\nCreation of\\nautonomous\\nagencies or\\n\\ncorporatization\\n\\nPrivatisation\\n\\n\\n\\nCOCOPS Work Package 3  Cross-national Report, July 2013 Page 13 \\n\\nNPM area, public sectors are investing heavily in efforts to reduce policy and delivery fragmentation. \\n\\nAt the same time, however, state provision not commonly extended into new areas (3.56). The fiscal \\n\\ncrisis slumbers in the background. This is also visible in the great importance attributed to public \\n\\nsector downsizing (4.97), a stronger focusing on outcomes and results (4.81), and the reduction of \\n\\ninternal bureaucracy (4.75).  \\n\\n \\n\\nIt is also remarkable that there is considerable variation across countries with regard to central \\n\\ntrends such as downsizing, flexibilisation of employment, and focusing on outcomes. The more \\n\\ngeneric reform trends are answered in a much more homogeneous way across countries.  It is thus \\n\\ninteresting to take a closer look at the reform trends that exhibit a high degree of variation across the \\n\\ncountries. Wide cross-country variation is observable for public sector downsizing (see Figure 5) \\n\\nalthough mostly due to a rather low relevance of this trend in Norway. It is a clearly important \\n\\nreform trend in the UK (5.67), France (5.60), Estonia (5.49) and the Netherlands (5.45). This aligns \\n\\nwith public announcements on budget and workforce restructuring. Downsizing is the least \\n\\nimportant in Norway (with a mean of only 3.14), which is obviously attribut\"\n",
+            "<class 'list'>\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QsNRo8I8Yem2"
+      },
+      "source": [
+        "# Installing Contextualized Topic Models\n",
+        "\n",
+        "Now, we install the contextualized topic model library"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "BUw5EQi8v9r1"
+      },
+      "source": [
+        "%%capture\n",
+        "!pip install contextualized-topic-models==1.8.1\n",
+        "!pip install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html"
+      ],
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "i39gpJRSXUV1"
+      },
+      "source": [
+        "# Restart the Notebook\n",
+        "\n",
+        "For the changes to take effect, we now need to restart the notebook.\n",
+        "\n",
+        "From the Menu:\n",
+        "\n",
+        "+ Runtime → Restart Runtime"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "M0c_ftxjxY_H"
+      },
+      "source": [
+        "## Importing what we need"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "SZmTpQUov8y8"
+      },
+      "source": [
+        "from contextualized_topic_models.models.ctm import CombinedTM\n",
+        "from contextualized_topic_models.utils.data_preparation import bert_embeddings_from_list, TopicModelDataPreparation\n",
+        "from contextualized_topic_models.datasets.dataset import CTMDataset\n",
+        "from contextualized_topic_models.evaluation.measures import CoherenceNPMI, InvertedRBO\n",
+        "from gensim.corpora.dictionary import Dictionary\n",
+        "from gensim.test.utils import common_texts\n",
+        "from gensim.models import ldamodel \n",
+        "from contextualized_topic_models.utils.preprocessing import WhiteSpacePreprocessing\n",
+        "import nltk\n",
+        "import os\n",
+        "import pickle"
+      ],
+      "execution_count": 5,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "CQkeIrdWLU2m"
+      },
+      "source": [
+        "## Preprocessing"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "V-AM070Ez6lW"
+      },
+      "source": [
+        "Let's pass our file with preprocess data to our text handler object. This object takes care of creating the bag of words for you.\n",
+        "\n",
+        "Why do we use the **preprocessed text** here? we need text without punctuation to build the bag of word. Also, we might want only to have the most frequent words inside the BoW. Too many words might not help."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "HoKrSIkxaNBt",
+        "outputId": "3f63df22-8c27-47d4-90b5-bb1b07e454de",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "nltk.download('stopwords')\n",
+        "\n",
+        "documents = text_file\n",
+        "#documents = [line.strip() for line in open(text_file, encoding=\"utf-8\").readlines()]\n",
+        "sp = WhiteSpacePreprocessing(documents, \"english\")\n",
+        "preprocessed_documents_for_bow, unpreprocessed_corpus_for_contextual, vocab = sp.preprocess()"
+      ],
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[nltk_data] Downloading package stopwords to /root/nltk_data...\n",
+            "[nltk_data]   Package stopwords is already up-to-date!\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "vu0HY7KWGrk1"
+      },
+      "source": [
+        "You might want to pickle the **training_dataset** object to avoid recomputing the BoW multiple times"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "KhLt6VA3wvCB",
+        "outputId": "4b1742ce-a985-48b4-c90d-a8c155ee058c",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 66,
+          "referenced_widgets": [
+            "a220b8e3c00943859adfda3e57006007",
+            "73b59898885b412ca4c4f238f3ecc69c",
+            "1b8b5fc036d1409ba26acd5e1396c4fb",
+            "ffbed31ec61f41d2ba73494b158a64ce",
+            "3422ca47af264d59802dde8eaa19a546",
+            "0eb5694d99c242b48f010fe56e0556a7",
+            "d1a7d63185fc4680afdd3580267a5145",
+            "31a3f4e73f2d469fa01f3b826b94cbfe",
+            "9d114cc0f8044b0ea6a4f54a7a3a60be",
+            "363f6991c4604895bd85aa1ab740f848",
+            "f68538efa6474e0fbaf17fb9d3d5687f"
+          ]
+        }
+      },
+      "source": [
+        "qt = TopicModelDataPreparation(\"bert-base-nli-mean-tokens\")\n",
+        "\n",
+        "training_dataset = qt.create_training_set(unpreprocessed_corpus_for_contextual, preprocessed_documents_for_bow)"
+      ],
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "100%|██████████| 405M/405M [00:14<00:00, 27.0MB/s]\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/vnd.jupyter.widget-view+json": {
+              "model_id": "a220b8e3c00943859adfda3e57006007",
+              "version_minor": 0,
+              "version_major": 2
+            },
+            "text/plain": [
+              "Batches:   0%|          | 0/5 [00:00<?, ?it/s]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "i5agbVqhxdnY"
+      },
+      "source": [
+        "## Training our Contextualized Topic Model\n",
+        "\n",
+        "Finally, we can fit our new topic model. We will ask the model to find 50 topics in our collection (n_component parameter of the CTM object)."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "dALamw7HxLj-",
+        "outputId": "bace416a-3dac-41fc-ae72-c96e8ba00e2b",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "ctm = CombinedTM(input_size=len(qt.vocab), bert_input_size=768, n_components=25, num_epochs=15)\n",
+        "\n",
+        "ctm.fit(training_dataset) "
+      ],
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Epoch: [15/15]\t Seen Samples: [12150/12150]\tTrain Loss: 13131.625771604939\tTime: 0:00:00.376945: : 15it [00:05,  2.61it/s]\n"
+          ],
+          "name": "stderr"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "-SEBG6wj9Zdu"
+      },
+      "source": [
+        "# Topics\n",
+        "\n",
+        "After training, now it is the time to look at our topics: we can use the \n",
+        "\n",
+        "```\n",
+        "get_topic_lists\n",
+        "```\n",
+        "\n",
+        "function to get the topics. It also accepts a parameter that allows you to select how many words you want to see for each topic.\n",
+        "\n",
+        "If you look at the topics, you will see that they all make sense and are representative of a collection of documents that comes from Wikipedia (general knowledge)."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "lxcKgjbx3V2o",
+        "outputId": "b3cb87d0-08c9-45b6-a37d-f89c45f9b188",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "ctm.get_topic_lists(5)"
+      ],
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[['party', 'parties', 'political', 'election', 'elections'],\n",
+              " ['member', 'policy', 'energy', 'financial', 'european'],\n",
+              " ['firms', 'firm', 'nn', 'productivity', 'nd'],\n",
+              " ['public', 'political', 'policy', 'actors', 'making'],\n",
+              " ['education', 'vocational', 'training', 'dual', 'vet'],\n",
+              " ['und', 'zu', 'der', 'den', 'die'],\n",
+              " ['eu', 'states', 'european', 'asylum', 'protection'],\n",
+              " ['law', 'rights', 'court', 'legal', 'human'],\n",
+              " ['rights', 'human', 'law', 'international', 'courts'],\n",
+              " ['online', 'people', 'media', 'social', 'new'],\n",
+              " ['social', 'people', 'organization', 'society', 'organizations'],\n",
+              " ['german', 'age', 'fertility', 'germany', 'first'],\n",
+              " ['data', 'results', 'time', 'used', 'increase'],\n",
+              " ['market', 'costs', 'prices', 'economic', 'model'],\n",
+              " ['market', 'price', 'costs', 'energy', 'cost'],\n",
+              " ['women', 'results', 'sample', 'however', 'employment'],\n",
+              " ['firms', 'firm', 'productivity', 'et', 'paper'],\n",
+              " ['states', 'legal', 'general', 'eu', 'tandfonline'],\n",
+              " ['asked', 'steps', 'regular', 'nresults', 'last'],\n",
+              " ['np', 'nd', 'ne', 'ng', 'nn'],\n",
+              " ['member', 'states', 'state', 'eu', 'european'],\n",
+              " ['social', 'et', 'economic', 'al', 'nwe'],\n",
+              " ['jobs', 'combined', 'absence', 'publications', 'settings'],\n",
+              " ['nments', 'ngiven', 'ntive', 'covered', 'sufficient'],\n",
+              " ['civil', 'groups', 'war', 'peace', 'society']]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 11
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jeNJfHvzjD2R"
+      },
+      "source": [
+        "### Let's find our documents' topics\n",
+        "\n",
+        "Ok now we can take a document and see which topic has been asigned to it. Results will obviously change with respect to the documents you are using. For example, let's predict the topic of the first preprocessed document that is taling about a peninsula."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Zl5O1HExjI0e",
+        "outputId": "74e82d99-b892-44e9-cee5-d2a123b48e80",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "topics_predictions = ctm.get_doc_topic_distribution(training_dataset, n_samples=20) # get all the topic predictions"
+      ],
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Sampling: [20/20]: : 20it [00:06,  2.88it/s]\n"
+          ],
+          "name": "stderr"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "fFWsIxDYj0pC",
+        "outputId": "bb27134f-173f-485b-bc78-020fe29226ef",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 120
+        }
+      },
+      "source": [
+        "preprocessed_documents_for_bow[0] # see the text of our preprocessed document"
+      ],
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            },
+            "text/plain": [
+              "'nsee discussions author publication https www researchgate net publication incentive preferences issues strategies local government first evidence narticle authors including nsome authors publication also working related projects open innovative governments view project public sector future view project publications nsee profile school governance publications nsee profile nall content following page september nthe user downloaded nhttps www researchgate net publication motivation incentive preferences issues strategies local government first evidence austria enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net publication motivation incentive preferences issues strategies local government first evidence austria enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net project open innovative governments enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net project public sector future enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net profile enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net profile enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net institution enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net profile enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net profile enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net profile enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net institution hertie school governance enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net profile enrichid rgreq xxx enrichsource el esc publicationcoverpdf nhttps www researchgate net profile enrichid rgreq xxx enrichsource el esc publicationcoverpdf incentive preferences issues strategies local government nfirst evidence austria nabstract many countries contexts questions public service motivation topic empirical studies lack research german ncountries specific observed although exists nresearch civil service motivation specific recent time research little paid effects recent efforts initiatives implement management instruments perceptions values job public sector employees nin paper research concept public motivation public administration german context thereby focus government level german countries often argued npm reforms present first results na current public management research project based broad survey city quite different policy fields sample several features characteristics strong logic last years also became reform initiatives along ideas new public management nour research focus question specific dimensions characteristics public service value preferences observed differ according various factors size unit policy field type activity personal factors age duration nof employment private sector experience education gender nin analysis also link concept public service motivation independent variable issues public management reform survey includes questions job incentive preferences various types well assessment public management reforms various types nmanagement instruments interested far specific public sector motivation specific incentives respondents assessment various measures nmanagement instruments proposed paper forms part research project public service motivation characteristics public administration opportunities incentives public der page introduction research public sector motivation identity last decade context concept public service motivation developed us defined respond motives primarily public ninstitutions organizations authors followed used instance describe force nthat individuals perform public service general motivation serve interests community state nation addition although model specifically towards united states us american model model nthat also found european region different researchers analyze public service behavior without especially european authors use like public service conceptual discussions increasing last years nand applied empirical studies different countries several studies used dependent nand independent variable relationship public service motivation nand job organizational commitment performance organizational members high levels appear contribute various ways engage public interest higher levels organizational believe jobs important turn leads working likely high job less likely leave jobs overall nresearch far central issue strategies identity motivation important cultural dimension cannot one socio historical context next together empirical application within research questions national differences npublic sector motivation relevance page nof outside us recent research holds differences npublic service motivation different countries phenomenon needs nresearch cross cultural context nin order problem regional differences authors nwhich cover sense also types value behavioral instance values go beyond self interest organizational interest concern interest na larger political individuals act appropriate na definition according work values general values seen work values recent equally based initial definition nin research design draw original nthey argue motivation act specific way must rational costs benefits rather rational normative motives individuals highly public service work based three categories nin various studies support also found cross sector found nthat public private managers significant differences perceptions different types contrast private managers public managers public service work others important higher pay less important similar conclusions preferences government hybrid business sector managers understood series studies developed measure distinct dimensions public policy making commitment public interest self dimensions distinction three categories motives mentioned public npolicy making category rational motives involves actions utility participation public policy making ones self importance commitment public interest nthe category norm based motives self category motives help others one personal understood page neither normative type state nthe four different dimensions measured multiple scale however measure developed used studies fact across ndifferent empirical studies another opinion needs attention different dimensions kind overall suggested dimension distinct potentially unique form follow study supported different dimensions many recent studies using questions use overall score dimension rather studying effects dimensions especially socio contexts four dimensions nthis overall score many countries contexts questions public service motivation nhave increasingly topic empirical studies observe lack research ngerman countries specific although nhas research civil service motivation specific recent years field nbeen followed little attention paid effects recent efforts initiatives nto implement management concepts instruments perceptions values job public sector employees paper research concept public sector motivation public administration na german research context focus local government level ngerman countries often argued npm reforms present first results current npublic management research project based broad survey city quite different policy fields sample public employees features characteristics administration strong logic last years administrative reform initiatives along ideas npm also reputation one regions europe providing proposed paper part research project public service motivation characteristics public administration opportunities incentives public nmanagement der page nhigh quality life quality life survey based survey nof international city highest quality life within nthe european union nour research focus question specific dimensions characteristics npublic service motivation value preferences observed specific context nhow differ according various factors size unit policy field type personal factors age duration employment private sector experience neducation gender analysis also link concept public service motivation nto various issues public management reform survey includes questions job incentive preferences various types nof incentives well assessment public management reforms various types nmanagement instruments interested far specific public sector motivation preferences specific incentives respondents assessment measures management instruments particular interest different dimensions show similar significantly different relationships nwith factors need separate nan overall research strategy nas data collection recently present nresults early stage research paper therefore statistics nto descriptive results first complex regression analyses influence several independent variables dimensions next step features public administration austria nas organizational practices socially rule sets dependent institutional managerial work attention need country specific data similarly public management literature factors characteristics legal culture understanding public sector change nour study focus austria country described home administration specifically city first time nthat concept applied german public administration believe nis necessary discuss concept specific context page germany institutional logic public characterized approach still theory law first constitution rational form authority idea rules established stable political applied equal independent central flexibility strongly constitutional principles nas principle principle regulations consequence public administration strong emphasis rules together relatively high amount internal orientation described legal performance results although nthese features common austria nthe home administration system hierarchical administration civil shows law nand objective civil great sense expertise stability special professional state nin austria elements professional identity different forms expertise bodies knowledge health education infrastructure social especially legal central role public executives background legal studies strong legal focus nof training system public employment system detailed regulations relatively private sector employment little mobility within systems austria germany administrative observe specific professional civil specific relation state nand public tasks resulting germany see includes core elements civil identity around ideas towards nand citizen action political changes great sense administrative expertise office public interest societal interests features life ntime status protection including based page nthese general features public sector logic identity equally run levels thus also city administration capital republic austria million city far governance system specific features takes unique position austria city federal state federal constitution art federal state legislation city council state executive body wider power compared due role state also due historical reasons function capital city state characterized large size broad variety functions na high complexity governance system city trend source austria employees enterprises na specific feature considerable impact administration political one party social democratic party period often city na far way era first city population people social democratic government political culture policy means national education social policy main local social democratic administration various elements local welfare system type top nof government seen achieved important working class nbased city still ii held years coalition party end majority council nas already long term one political party leads na complex local government political private actors sense described form social democratic urban ngovernance et al responsible broad tasks areas education social affairs environmental protection employment state addition city administration responsible broad city administration functions related urban development culture management public management page city administration currently regional latter responsible nthe along system federal administration units developed quite distinct corporate identities often strong professional status within specific policy field decades hierarchical governance nsystem recently liberal models line npolitical eu countries et al late city administration became management initiatives along ideas npm similar federal administration nwith international trends order promote entrepreneurial city large addition according administrative led city self understanding refers large company focus citizens efficiency criteria nintroduction new management instruments contract management planning nthe concept relationship features developments would point direction high npublic interest political required public servants would make relatively motivation policy making hand new entrepreneurial clear opposition traditional self relation public servants nresearch interested extent features system social democratic influence legal hierarchical culture influence various dimensions well public sector general addition interested whether observe new logic starting values federal tasks according constitution art either federal authorities purpose authorities state level called federal administration case page data method study based mail employees city well one autonomous unit mit administrative job types addition also paper form selection nbased several criteria different policy fields cultural social internal external services core autonomous units included open questions general towards npublic services including questions job incentives management public administration asked personal background ninformation pre lower level executives prior survey employees mentioned city received executive study employees complete office hours data database form added database nwith respondents response rate mentioned sample area persons functions included leads overall sample although study public sector broad findings representative study whole city nnumber respondents also different questions questions nthe sample female male respondents years generally relatively force public sector regarding family status majority nin children concerning background majority public executives sample low middle level education degree whereas university degree respondents working capacity member npolitical party regard employment working npublic sector years relatively new five employment refer employment private sector'"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 15
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kJf1bP5PjqOQ",
+        "outputId": "5efbc20d-686d-433a-da72-810d73107bce",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "import numpy as np\n",
+        "topic_number = np.argmax(topics_predictions[0]) # get the topic id of the first document\n",
+        "topic_number"
+      ],
+      "execution_count": 17,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "24"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 17
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yMA9vUsgjwOi",
+        "outputId": "ec6633ff-49f0-4616-d4e6-bfb2e773eab5",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "ctm.get_topic_lists(5)[topic_number] #and the topic should and could be about public management related things"
+      ],
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "['civil', 'groups', 'war', 'peace', 'society']"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 20
+        }
+      ]
+    }
+  ]
+}
