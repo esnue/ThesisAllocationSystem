@@ -1,6 +1,6 @@
 # Thesis Allocation System for the Hertie School 
 
-This project's goal is to facilitate easier matching of thesis supervisors with students based on their thesis proposals. The multi-label text classification model is based on pre-trained DistilBERT pretrained and Huggingface Transformers. 
+This project's goal is to facilitate easier matching of thesis supervisors with students based on their thesis proposals. The multi-label text classification model is based on pre-trained DistilBERT from Huggingface Transformers. 
 
 # Navigation 
 
