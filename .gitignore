@@ -1,5 +1,4 @@
-**/supervisors
-**/theses
-**/train
-
-**/.old
+data/supervisors/
+data/theses/
+data/train/
+.old/
