@@ -43,6 +43,17 @@ st.sidebar.markdown("This project would not have been possible without the groun
 topics_df_wide = pd.read_csv('data/train-label_wide.csv')
 topics_df_long = pd.read_csv('data/train-label_long.csv')
 
+# =============================================================================
+# Supervisors Image Buttons
+# =============================================================================
+supervisors = ['Anheier', 'Bryson', 'Centre for International Security', 'Cali',
+              'Cingolani', 'Costello', 'Flachsland', 'Graf', 'Hallerberg',
+              'Hammerschmid', 'Hassel', 'Hirth', 'Hustedt','Iacovone',
+              'Jachtenfuchs','Jankin', 'Kayser','Kreyenfeld','Mair','Mena',              
+              'Mungiu-Pippidi', 'Munzert','Patz','Reh','Roemmele','Shaikh',
+              'Snower','Stockmann','Traxler', 'Wegrich']
+
+st.image("img/Anheier.jpg", width=200)
 
 # =============================================================================
 # Visualization Topics
