@@ -6,6 +6,15 @@ import streamlit as st
 import numpy as np
 import os
 import pandas as pd
+import streamlit.components.v1 as components
+
+
+def about():
+	st.write(
+		'''
+        This app is created by Lena Wagner and Ba Linh Le for the course Natural Language Process with Deep Learning at Hertie School taught by Prof. Dr. Slava Jankin.
+
+		''')
 
 # =============================================================================
 # Header and Options
