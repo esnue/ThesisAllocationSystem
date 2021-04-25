@@ -61,7 +61,8 @@ def main():
 		    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 		<style>
-			.card img{
+
+			.card-img-top {
 				max-width:100%;
 				max-height:100%;
 				object-fit: contain;
@@ -116,7 +117,7 @@ def main():
 		</div>
 
 		    """,
-		    height=620,
+		    height=3000,
 		)
 	elif choice == "About":
 		about()
