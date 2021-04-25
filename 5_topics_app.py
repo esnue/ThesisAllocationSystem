@@ -19,6 +19,7 @@ st.set_page_config(layout="centered", initial_sidebar_state="auto", page_title="
 # =============================================================================
 
 def about():
+
 	st.title("About this Tool")
 	st.write('''This is an app designed to help you match your research proposal with possible thesis supervisors by giving you a quick and easy overview over the wide range of academic expertise of supervisors at Hertie.
 	We hope to spare you the tedious work of going through each supervision plan, but that you are rather able to narrow down your options. 
@@ -40,14 +41,15 @@ def about():
 def main():
 
 	# if you want to use your own styling, uncomment the line below and edit a css file
-    # local_css("style.css")
+    #local_css("style.css")
 
-	st.image("thesis.png", width=600)
+	#st.image("thesis.png", width=600)
 	activities = ["Home", "About"]
 	choice = st.sidebar.selectbox("Navigation", activities)
 	if choice == "Home":
-		#st.title("Master Thesis Supervisor Recommendation")
-		st.write("""
+		st.title("Master Thesis Supervisor Recommendation")
+		st.write("""\n
+		\n
 			This is a tool to recommend suitable thesis supervisor for Hertie School students.
 			
 			Here are your professors: 
@@ -57,7 +59,15 @@ def main():
 		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-			
+
+		<style>
+			.card img{
+				max-width:100%;
+				max-height:100%;
+				object-fit: contain;
+			}
+		</style>
+
 		<div class="row">
 		<div class="col-sm-6">
 			<div class="card" id="jankin" style="width: 18rem;">
