@@ -62,7 +62,39 @@ supervisors = ['Anheier', 'Bryson', 'Centre for International Security', 'Cali',
               'Mungiu-Pippidi', 'Munzert','Patz','Reh','Roemmele','Shaikh',
               'Snower','Stockmann','Traxler', 'Wegrich']
 
-st.image("img/Anheier.jpg", width=200)
+	# if you want to use your own styling, uncomment the line below and edit a css file
+    # local_css("style.css")
+def main():
+    
+	st.image("thesis.png", width=600)
+	activities = ["Home", "About"]
+	choice = st.sidebar.selectbox("Pick something fun", activities)
+	if choice == "Home":
+		# st.title("Master Thesis Supervisor Recommendation")
+		st.write("""
+			This is a tool to recommend suitable thesis supervisor for Hertie School students. \n
+			
+			Here are your professors: 
+			""")
+		components.html(
+		    """
+		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+			<div class="card" style="width: 18rem;">
+			  <img class="card-img-top" src="https://sjankin.com/images/profile.jpg" alt="Slava Jankin">
+			  <div class="card-body">
+			    <h5 class="card-title">Slava Jankin</h5>
+			    <p class="card-text">Slava Jankin is Professor of Data Science and Public Policy at the Hertie School. He is the Director of the Hertie School Data Science Lab. His research and teaching is primarily in the field of natural language processing and machine learning.</p>
+			    <a href="#" class="btn btn-primary">See more</a>
+			  </div>
+			</div>
+		    """,
+		    height=620,
+		)
+	elif choice == "About":
+		about()
 
 # =============================================================================
 # Visualization Topics
@@ -88,3 +120,10 @@ st.image("img/Anheier.jpg", width=200)
 #else:
 
 #st.bar_chart(topics_df_wide)
+
+# =============================================================================
+# Call functions
+# =============================================================================
+
+if __name__ == "__main__":
+    main()
