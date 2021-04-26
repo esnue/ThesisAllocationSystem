@@ -63,7 +63,7 @@ def main():
 
 			.card-img-top {
 				width: 100%;
-    			height: 12vw;
+    			height: 8vw;
     			object-fit: cover;
 			}
 		</style>
@@ -298,7 +298,84 @@ def main():
 					<a href="#" class="btn btn-primary">See more</a>
 				</div>
 			</div>
-		</div>								
+		</div>	
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Mungiu-Pippidi/AlinaMungiu-Pippidi_Copyright_HertieSchool.jpg" alt="Alina Mungiu-Pippidi">
+				<div class="card-body">
+					<h5 class="card-title">Alina Mungiu-Pippidi</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Democracy Studies</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Kreyenfeld/MichaelaKreyenfeld_Copyright_HertieSchool.jpg" alt="Michaela Kreyenfeld">
+				<div class="card-body">
+					<h5 class="card-title">Michaela Kreyenfeld</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Sociology</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://www.cass.city.ac.uk/__data/assets/image/0003/272487/Mena,-Sebastien.jpg" alt="Sébastien Mena">
+				<div class="card-body">
+					<h5 class="card-title">Sébastien Mena</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Organization and Governance</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Roemmele/AndreaRoemmele_Copyright_HertieSchool.jpg" alt="Andrea Römmele">
+				<div class="card-body">
+					<h5 class="card-title">Andrea Römmele</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Communication in Politics and Civil Society</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>	
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Mair/JohannaMair_Copyright_HertieSchool.jpg" alt="Johanna Mair">
+				<div class="card-body">
+					<h5 class="card-title">Johanna Mair</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Organization, Strategy and Leadership</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>	
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://simonmunzert.github.io/images/munzertportrait2019.jpg" alt="Simon Munzert">
+				<div class="card-body">
+					<h5 class="card-title">Simon Munzert</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Assistant Professor of Data Science and Public Policy</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://www.worldbank.org/content/dam/photos/220x220/2019/sep/iacovone_220.jpg" alt="Leonardo Iacovone">
+				<div class="card-body">
+					<h5 class="card-title">Leonardo Iacovone (Adjunct)</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Economics</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>																																				
 
 		</div>
 
