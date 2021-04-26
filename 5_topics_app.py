@@ -243,12 +243,67 @@ def main():
 					<a href="#" class="btn btn-primary">See more</a>
 				</div>
 			</div>
-		</div>					
+		</div>	
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Hammerschmid/GerhardHammerschmid__Copyright_HertieSchool.JPG" alt="Gerhard Hammerschmid">
+				<div class="card-body">
+					<h5 class="card-title">Gerhard Hammerschmid</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Public and Financial Management</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Hassel/AnkeHassel_Copyright_HertieSchool.jpg" alt="Anke Hassel">
+				<div class="card-body">
+					<h5 class="card-title">Anke Hassel</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Public Policy</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>		
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Hustedt/ThuridHustedt_Copyright_HertieSchool_ThomasLobenwein.jpg" alt="Thurid Husted">
+				<div class="card-body">
+					<h5 class="card-title">Thurid Husted</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Public Administration and Management</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>	
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_portraits/Hirth.jpg" alt="Lion Hirth">
+				<div class="card-body">
+					<h5 class="card-title">Lion Hirth</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Assistant Professor of Governance of Digitalisation and Energy Policy</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>	
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 15rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Kayser/MarkKayser_Copyright_HertieSchool.jpg" alt="Mark Kayser">
+				<div class="card-body">
+					<h5 class="card-title">Mark Kayser</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Applied Methods and Comparative Politics</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>								
 
 		</div>
 
 		    """,
-		    height=3000,
+		    height=2000,
 		)
 	elif choice == "About":
 		about()
