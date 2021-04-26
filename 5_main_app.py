@@ -1,7 +1,6 @@
 """
 This module contains the app for Streamlit. 
 """
-import topics
 import streamlit as st
 import streamlit.components.v1 as components
 import numpy as np
@@ -34,6 +33,14 @@ def about():
 	''')
 
 # =============================================================================
+# Areas of Expertise Page
+# =============================================================================
+
+def expertise():
+
+	st.title("Areas of Expertise")
+
+# =============================================================================
 # Main Page
 # =============================================================================
 
@@ -43,13 +50,14 @@ def main():
     #local_css("style.css")
 
 	#st.image("thesis.png", width=600)
-	activities = ["Home", "About"]
+	activities = ["Home", "About", "Areas of Expertise"]
 	choice = st.sidebar.selectbox("Navigation", activities)
 	if choice == "Home":
 		st.title("Master Thesis Supervisor Recommendation")
 		st.write("""\n
 		\n
 			This is a tool to assist Hertie School students in finding a suitable thesis supervisor. By clicking on the 'See more' button, you will get a comprehensive overview of their individual areas of academic expertise based on their body of publications. 
+			You can also access their areas of expertise directly by navigating to the page in the navigation.
 			
 			Here are your professors: 
 			""")
@@ -384,18 +392,12 @@ def main():
 		)
 	elif choice == "About":
 		about()
-
+	elif choice == "Areas of Expertise":
+		expertise()
 
 
 if __name__ == "__main__":
     main()
-
-# =============================================================================
-# Visualization Topics
-# =============================================================================
-
-
-##
 
 # =============================================================================
 # User's Input
