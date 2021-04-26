@@ -49,7 +49,7 @@ def main():
 		st.title("Master Thesis Supervisor Recommendation")
 		st.write("""\n
 		\n
-			This is a tool to assist Hertie School students in finding a suitable thesis supervisor. By clicking on the 'See more' button, you will get a comprehensive overview of their individual areas of academic expertise.
+			This is a tool to assist Hertie School students in finding a suitable thesis supervisor. By clicking on the 'See more' button, you will get a comprehensive overview of their individual areas of academic expertise based on their body of publications. 
 			
 			Here are your professors: 
 			""")
@@ -63,14 +63,14 @@ def main():
 
 			.card-img-top {
 				width: 100%;
-    			height: 15vw;
+    			height: 12vw;
     			object-fit: cover;
 			}
 		</style>
 
 		<div class="row">
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://sjankin.github.io/images/profile.jpg" alt="Slava Jankin">
 				<div class="card-body">
 					<h5 class="card-title">Slava Jankin</h5>
@@ -81,7 +81,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Anheier/HelmutKAnheier_Copyright_HertieSchool.jpg" alt="Helmut Anheier">
 				<div class="card-body">
 					<h5 class="card-title">Helmut K. Anheier</h5>
@@ -92,7 +92,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/user_upload/Joanna_Bryson_800px.jpg" alt="Joanna Bryson">
 				<div class="card-body">
 					<h5 class="card-title">Joanna Bryson</h5>
@@ -103,7 +103,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/user_upload/Lukas_Graf_Copyright_HertieSchoolofGovernance.jpg" alt="Lukas Graf">
 				<div class="card-body">
 					<h5 class="card-title">Lukas Graf</h5>
@@ -114,7 +114,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_portraits/Shaikh_press.jpg" alt="Mujaheed Shaikh">
 				<div class="card-body">
 					<h5 class="card-title">Mujaheed Shaikh</h5>
@@ -125,7 +125,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://eu.daad.de/medien/eu.daad.de.2016/dokumente/die-nationale-agentur/30-jahre-erasmus/alumni/profilfoto_patz._300x300jpg.jpg" alt="Ronny Patz">
 				<div class="card-body">
 					<h5 class="card-title">Ronny Patz</h5>
@@ -136,7 +136,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Wucherpfenning/JulianWucherpfennig_Copyright_HertieSchool.jpg" alt="Julian Wucherpfennig">
 				<div class="card-body">
 					<h5 class="card-title">Julian Wucherpfennig</h5>
@@ -147,7 +147,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://www.ifw-kiel.de/fileadmin/_processed_/9/5/csm_049_GS_PwC_290518_7768_3bf25ae294.jpg" alt="Dennis Snower">
 				<div class="card-body">
 					<h5 class="card-title">Dennis Snower</h5>
@@ -158,7 +158,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Traxler/ChristianTraxler_Copyright_HertieSchool.jpg" alt="Christian Traxler">
 				<div class="card-body">
 					<h5 class="card-title">Christian Traxler</h5>
@@ -169,7 +169,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Stockmann/Copyright_DanielaStockmann.jpg" alt="Daniela Stockmann">
 				<div class="card-body">
 					<h5 class="card-title">Daniela Stockmann</h5>
@@ -180,7 +180,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Wegrich/KaiWegrich_Copyright_HertieSchool.jpg" alt="Kai Wegrich">
 				<div class="card-body">
 					<h5 class="card-title">Kai Wegrich</h5>
@@ -191,7 +191,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Cali/BasakCali_Copyright_HertieSchool.jpg" alt="Başak Çalı">
 				<div class="card-body">
 					<h5 class="card-title">Başak Çalı</h5>
@@ -202,7 +202,7 @@ def main():
 		</div>
 		
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/_processed_/3/6/csm_Costello_WEB_size_171cd2cda6.jpg" alt="Cathryn Costello">
 				<div class="card-body">
 					<h5 class="card-title">Cathryn Costello</h5>
@@ -213,7 +213,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Cingolani/LucianaCingolani_Copyright_HertieSchool.jpg" alt="Luciana Cingolani">
 				<div class="card-body">
 					<h5 class="card-title">Luciana Cingolani</h5>
@@ -224,7 +224,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Flachsland/ChristianFlachsland_Copyright_HertieSchool.jpg" alt="Christian Flachsland">
 				<div class="card-body">
 					<h5 class="card-title">Christian Flachsland</h5>
@@ -235,7 +235,7 @@ def main():
 		</div>
 
 		<div class="col-sm">
-			<div class="card h-100" style="width: 13rem;">
+			<div class="card h-100" style="width: 15rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Hallerberg/MarkHallerberg_Copyright_HertieSchool.jpg" alt="Mark Hallerberg">
 				<div class="card-body">
 					<h5 class="card-title">Mark Hallerberg</h5>
