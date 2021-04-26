@@ -2,17 +2,16 @@
 This module contains the app for Streamlit. 
 """
 
+import streamlit as st
+import streamlit.components.v1 as components
 import numpy as np
 import os
 import pandas as pd
-import streamlit as st
-import streamlit.components.v1 as components
-
 # =============================================================================
 # Header and Options
 # =============================================================================
 
-st.set_page_config(layout="centered", initial_sidebar_state="auto", page_title="Hertie Supervisor Tool") 
+st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="Hertie Supervisor Tool") 
 
 # =============================================================================
 # About Page
@@ -50,7 +49,7 @@ def main():
 		st.title("Master Thesis Supervisor Recommendation")
 		st.write("""\n
 		\n
-			This is a tool to recommend suitable thesis supervisor for Hertie School students.
+			This is a tool to assist Hertie School students in finding a suitable thesis supervisor. By clicking on the 'See more' button, you will get a comprehensive overview of their individual areas of academic expertise.
 			
 			Here are your professors: 
 			""")
@@ -200,7 +199,51 @@ def main():
 					<a href="#" class="btn btn-primary">See more</a>
 				</div>
 			</div>
-		</div>		
+		</div>
+		
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/_processed_/3/6/csm_Costello_WEB_size_171cd2cda6.jpg" alt="Cathryn Costello">
+				<div class="card-body">
+					<h5 class="card-title">Cathryn Costello</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Fundamental Rights</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Cingolani/LucianaCingolani_Copyright_HertieSchool.jpg" alt="Luciana Cingolani">
+				<div class="card-body">
+					<h5 class="card-title">Luciana Cingolani</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Assistant Professor of Public Administration</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Flachsland/ChristianFlachsland_Copyright_HertieSchool.jpg" alt="Christian Flachsland">
+				<div class="card-body">
+					<h5 class="card-title">Christian Flachsland</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Sustainability</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Hallerberg/MarkHallerberg_Copyright_HertieSchool.jpg" alt="Mark Hallerberg">
+				<div class="card-body">
+					<h5 class="card-title">Mark Hallerberg</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Public Management and Political Economy</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>					
 
 		</div>
 
