@@ -1,7 +1,7 @@
 """
 This module contains the app for Streamlit. 
 """
-
+import topics
 import streamlit as st
 import streamlit.components.v1 as components
 import numpy as np
@@ -151,7 +151,7 @@ def main():
 				<img class="card-img-top" src="https://www.ifw-kiel.de/fileadmin/_processed_/9/5/csm_049_GS_PwC_290518_7768_3bf25ae294.jpg" alt="Dennis Snower">
 				<div class="card-body">
 					<h5 class="card-title">Dennis Snower</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Senior Professor of Macroeconomics and Sustainability </h6>
+					<h6 class="card-subtitle mb-2 text-muted">Senior Professor of Macroeconomics and Sustainability</h6>
 					<a href="#" class="btn btn-primary">See more</a>
 				</div>
 			</div>
