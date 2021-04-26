@@ -63,15 +63,15 @@ def main():
 		<style>
 
 			.card-img-top {
-				max-width:100%;
-				max-height:100%;
-				object-fit: contain;
+				width: 100%;
+    			height: 15vw;
+    			object-fit: cover;
 			}
 		</style>
 
 		<div class="row">
-		<div class="col-sm-6">
-			<div class="card" id="jankin" style="width: 18rem;">
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
 				<img class="card-img-top" src="https://sjankin.github.io/images/profile.jpg" alt="Slava Jankin">
 				<div class="card-body">
 					<h5 class="card-title">Slava Jankin</h5>
@@ -81,19 +81,19 @@ def main():
 			</div>
 		</div>
 
-		<div class="col-sm-6">
-			<div class="card" id="anheier" style="width: 18rem;">
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Anheier/HelmutKAnheier_Copyright_HertieSchool.jpg" alt="Helmut Anheier">
 				<div class="card-body">
 					<h5 class="card-title">Helmut K. Anheier</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Professor of Sociology</h6>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Sociology</h6>					
 					<a href="#" class="btn btn-primary">See more</a>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-sm-6">
-			<div class="card" id="bryson" style="width: 18rem;">
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/user_upload/Joanna_Bryson_800px.jpg" alt="Joanna Bryson">
 				<div class="card-body">
 					<h5 class="card-title">Joanna Bryson</h5>
@@ -103,8 +103,8 @@ def main():
 			</div>
 		</div>
 
-		<div class="col-sm-6">
-			<div class="card" id="graf" style="width: 18rem;">
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
 				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/user_upload/Lukas_Graf_Copyright_HertieSchoolofGovernance.jpg" alt="Lukas Graf">
 				<div class="card-body">
 					<h5 class="card-title">Lukas Graf</h5>
@@ -113,6 +113,94 @@ def main():
 				</div>
 			</div>
 		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_portraits/Shaikh_press.jpg" alt="Mujaheed Shaikh">
+				<div class="card-body">
+					<h5 class="card-title">Mujaheed Shaikh</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Health Economics</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://eu.daad.de/medien/eu.daad.de.2016/dokumente/die-nationale-agentur/30-jahre-erasmus/alumni/profilfoto_patz._300x300jpg.jpg" alt="Ronny Patz">
+				<div class="card-body">
+					<h5 class="card-title">Ronny Patz</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Lecturer of International Political Economy</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Wucherpfenning/JulianWucherpfennig_Copyright_HertieSchool.jpg" alt="Julian Wucherpfennig">
+				<div class="card-body">
+					<h5 class="card-title">Julian Wucherpfennig</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of International Affairs and Security</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://www.ifw-kiel.de/fileadmin/_processed_/9/5/csm_049_GS_PwC_290518_7768_3bf25ae294.jpg" alt="Dennis Snower">
+				<div class="card-body">
+					<h5 class="card-title">Dennis Snower</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Senior Professor of Macroeconomics and Sustainability </h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Traxler/ChristianTraxler_Copyright_HertieSchool.jpg" alt="Christian Traxler">
+				<div class="card-body">
+					<h5 class="card-title">Christian Traxler</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Economics</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Stockmann/Copyright_DanielaStockmann.jpg" alt="Daniela Stockmann">
+				<div class="card-body">
+					<h5 class="card-title">Daniela Stockmann</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Digital Governance</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Wegrich/KaiWegrich_Copyright_HertieSchool.jpg" alt="Kai Wegrich">
+				<div class="card-body">
+					<h5 class="card-title">Kai Wegrich</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of Public Administration and Public Policy</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="card h-100" style="width: 13rem;">
+				<img class="card-img-top" src="https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Cali/BasakCali_Copyright_HertieSchool.jpg" alt="Başak Çalı">
+				<div class="card-body">
+					<h5 class="card-title">Başak Çalı</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Professor of International Law</h6>
+					<a href="#" class="btn btn-primary">See more</a>
+				</div>
+			</div>
+		</div>		
 
 		</div>
 
