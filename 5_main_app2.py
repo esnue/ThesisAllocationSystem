@@ -6,6 +6,7 @@ import streamlit.components.v1 as components
 import numpy as np
 import os
 import pandas as pd
+import itertools
 # =============================================================================
 # Header and Options
 # =============================================================================
@@ -67,6 +68,8 @@ def main():
 
 		#refactor this as loop per row if enough time and motivation
 
+
+		##COL 1 (7 per row)
 		#Jankin
 		c1.header('Slava Jankin')
 		c1.image('https://sjankin.github.io/images/profile.jpg')
@@ -106,6 +109,96 @@ def main():
 		#Expander for more info
 		exp = c1.beta_expander('Learn more')
 		exp.write('Here comes the visualization')
+
+		#Wucherpfennig						
+		c1.header('Julian Wucherpfennig')
+		c1.image('https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Wucherpfenning/JulianWucherpfennig_Copyright_HertieSchool.jpg')
+		c1.write('Professor of International Affairs and Security')
+		#Expander for more info
+		exp = c1.beta_expander('Learn more')
+		exp.write('Here comes the visualization')
+
+		##COL 2 (try out loop)
+
+		prof2 = ['Dennis Snower', 'Christian Traxler', 'Daniela Stockmann', 'Kai Wegrich', 'Başak Çalı', 'Cathryn Costello', 'Luciana Cingolani']
+
+		url2 = ['https://www.ifw-kiel.de/fileadmin/_processed_/9/5/csm_049_GS_PwC_290518_7768_3bf25ae294.jpg', 
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Traxler/ChristianTraxler_Copyright_HertieSchool.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Stockmann/Copyright_DanielaStockmann.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Wegrich/KaiWegrich_Copyright_HertieSchool.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Cali/BasakCali_Copyright_HertieSchool.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/_processed_/3/6/csm_Costello_WEB_size_171cd2cda6.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Cingolani/LucianaCingolani_Copyright_HertieSchool.jpg']
+
+		tl2 = ['Macroeconomics and Sustainability', 'Economics', 'Digital Governance', 'Public Administration and Public Policy', 'International Law',
+		'Fundamental Rights', 'Public Administration']
+
+		def fill_col(a,b,c):
+
+			c2.header(a)
+			c2.image(b)
+			c2.write('Professor of ' + c)
+			#Expander for more info
+			exp2 = c2.beta_expander('Learn more')
+			exp2.write('Here comes the visualization')
+
+		for (d,e,f) in itertools.zip_longest(prof2, url2, tl2):
+			fill_col(d,e,f)
+
+		##COL 3
+		prof3 = ['Christian Flachsland', 'Mark Hallerberg', 'Gerhard Hammerschmid', 'Anke Hassel', 'Thurid Hustedt', 'Mark Kayser']
+
+		url3 = ['https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Flachsland/ChristianFlachsland_Copyright_HertieSchool.jpg', 
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Hallerberg/MarkHallerberg_Copyright_HertieSchool.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Hammerschmid/GerhardHammerschmid__Copyright_HertieSchool.JPG',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Hassel/AnkeHassel_Copyright_HertieSchool.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Hustedt/ThuridHustedt_Copyright_HertieSchool_ThomasLobenwein.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Kayser/MarkKayser_Copyright_HertieSchool.jpg']
+
+		tl3 = ['Sustainability', 'Public Management and Political Economy', 'Public and Financial Management', 'Public Policy', 'Public Administration and Management', 
+		'Applied Methods and Comparative Politics']
+
+		def fill_col(a,b,c):
+
+			c3.header(a)
+			c3.image(b)
+			c3.write('Professor of ' + c)
+			#Expander for more info
+			exp3 = c3.beta_expander('Learn more')
+			exp3.write('Here comes the visualization')
+
+		for (d,e,f) in itertools.zip_longest(prof3, url3, tl3):
+			fill_col(d,e,f)
+
+		#exception: Hirth
+		c3.header('Lion Hirth')
+		c3.image('https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_portraits/Hirth.jpg')
+		c3.write('Assistant Professor of Governance of Digitalisation and Energy Policy')
+		#Expander for more info
+		exp3 = c3.beta_expander('Learn more')
+		exp3.write('Here comes the visualization')
+
+		##COL 4
+		prof4 = []
+
+		url4 = []
+
+		tl4 = []
+		def fill_col(a,b,c):
+
+			c4.header(a)
+			c4.image(b)
+			c4.write('Professor of ' + c)
+			#Expander for more info
+			exp4 = c4.beta_expander('Learn more')
+			exp4.write('Here comes the visualization')
+
+		for (d,e,f) in itertools.zip_longest(prof4, url4, tl4):
+			fill_col(d,e,f)
+
+
+
+
 
 
 	elif choice == "About":
