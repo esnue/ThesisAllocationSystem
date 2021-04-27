@@ -62,14 +62,52 @@ def main():
 			
 			Here are your professors: 
 			""")
-		def my_widget(key):
-			st.subheader(key)
-			st.image('img\jankin.jpg')
-			clicked = st.button("Learn more about " + key)
+		#column layout (7 rows, 4 cols)
+		c1, c2, c3, c4 = st.beta_columns((1, 1, 1, 1))
 
-		# This works in the main area
-		clicked = my_widget("Slava Jankin")
-		
+		#refactor this as loop per row if enough time and motivation
+
+		#Jankin
+		c1.header('Slava Jankin')
+		c1.image('https://sjankin.github.io/images/profile.jpg')
+		c1.write('Professor of Data Science and Public Policy')
+		#Expander for more info
+		exp = c1.beta_expander('Learn more')
+		exp.write('Here comes the visualization')
+
+		#Anheier
+		c1.header('Helmut K. Anheier')
+		c1.image('https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Anheier/HelmutKAnheier_Copyright_HertieSchool.jpg')
+		c1.write('Professor of Sociology')
+		#Expander for more info
+		exp = c1.beta_expander('Learn more')
+		exp.write('Here comes the visualization')
+
+		#Bryson
+		c1.header('Joanna Bryson')
+		c1.image('https://hertieschool-f4e6.kxcdn.com/fileadmin/user_upload/Joanna_Bryson_800px.jpg')
+		c1.write('Professor of Ethics and Technology')
+		#Expander for more info
+		exp = c1.beta_expander('Learn more')
+		exp.write('Here comes the visualization')
+
+		#Graf
+		c1.header('Lukas Graf')
+		c1.image('https://hertieschool-f4e6.kxcdn.com/fileadmin/user_upload/Lukas_Graf_Copyright_HertieSchoolofGovernance.jpg')
+		c1.write('Assistant Professor of Educational Governance')
+		#Expander for more info
+		exp = c1.beta_expander('Learn more')
+		exp.write('Here comes the visualization')
+
+		#Shaikh						
+		c1.header('Mujaheed Shaikh')
+		c1.image('https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_portraits/Shaikh_press.jpg')
+		c1.write('Professor of Health Economics')
+		#Expander for more info
+		exp = c1.beta_expander('Learn more')
+		exp.write('Here comes the visualization')
+
+
 	elif choice == "About":
 		about()
 	elif choice == "Areas of Expertise":
