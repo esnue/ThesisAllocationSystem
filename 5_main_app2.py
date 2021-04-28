@@ -179,11 +179,19 @@ def main():
 		exp3.write('Here comes the visualization')
 
 		##COL 4
-		prof4 = []
+		prof4 = ['Alina Mungiu-Pippidi','Michaela Kreyenfeld', 'Sébastien Mena', 'Andrea Römmele', 'Johanna Mair', 'Leonardo Iacovone']
 
-		url4 = []
+		url4 = ['https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Mungiu-Pippidi/AlinaMungiu-Pippidi_Copyright_HertieSchool.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Kreyenfeld/MichaelaKreyenfeld_Copyright_HertieSchool.jpg',
+		'https://www.cass.city.ac.uk/__data/assets/image/0003/272487/Mena,-Sebastien.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Roemmele/AndreaRoemmele_Copyright_HertieSchool.jpg',
+		'https://hertieschool-f4e6.kxcdn.com/fileadmin/5_WhoWeAre/1_People_directory/Faculty_downloads/Mair/JohannaMair_Copyright_HertieSchool.jpg',
+		'https://www.worldbank.org/content/dam/photos/220x220/2019/sep/iacovone_220.jpg'		
+		]
 
-		tl4 = []
+		tl4 = ['Democracy Studies', 'Sociology', 'Organization and Governance', 'Communication in Politics and Civil Society',
+		'Organization, Strategy and Leadership', 'Economics']
+
 		def fill_col(a,b,c):
 
 			c4.header(a)
@@ -196,10 +204,13 @@ def main():
 		for (d,e,f) in itertools.zip_longest(prof4, url4, tl4):
 			fill_col(d,e,f)
 
-
-
-
-
+		#exception: Munzert
+		c4.header('Simon Munzert')
+		c4.image('https://simonmunzert.github.io/images/munzertportrait2019.jpg')
+		c4.write('Assistant Professor of Data Science and Public Policy')
+		#Expander for more info
+		exp4 = c4.beta_expander('Learn more')
+		exp4.write('Here comes the visualization')
 
 	elif choice == "About":
 		about()
