@@ -1,6 +1,6 @@
 # Supervisor Recommendation Tool for the Hertie School 
 
-This project's goal is to facilitate easier matching of thesis supervisors with students based on their thesis proposals. 
+This project's goal is to facilitate matching of thesis supervisors with students by improving access to information on areas of expertise that can be covered by the school faculty.
 
 We used a Deep Learning topic model called [Contexualized Topic Model](https://github.com/MilaNLProc/contextualized-topic-models) to generate topic proportions for each professor based on their published academic papers. The papers we sourced from Google Scholar. The supervision plans are also available at [MyStudies](https://mystudies.hertie-school.org/en/).
 
