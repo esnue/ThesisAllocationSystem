@@ -4,6 +4,8 @@ This project's goal is to facilitate matching of thesis supervisors with student
 
 We used a Deep Learning topic model called [Contexualized Topic Model](https://github.com/MilaNLProc/contextualized-topic-models) and train it on the body of academic publications that are publicly available on the internet for each of the 28 thesis supervisors at Hertie School, as of Fall 2020. The model then identifies topics for each text, thereby informing on topic proportions per professors, which serves as a proxy for their areas of academic expertise. rced from Google Scholar. As validation data, we used the supervisors' supervision plans that are available at [MyStudies](https://mystudies.hertie-school.org/en/).
 
+Contextualized Topic Models (CTM) add contextual information to neural topic models, thereby significantly improving coherence with competitive results in topic diversity.
+
 # Navigation 
 
 We used Google Colab for computation-heavy tasks. These files have an .ipynb-ending and can also be run in Jupyter Notebooks. Moreover, the files are labelled in the order of the working process.
