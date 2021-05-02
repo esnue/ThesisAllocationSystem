@@ -6,17 +6,16 @@ We used a Deep Learning topic model called [Contexualized Topic Model](https://g
 
 # Navigation 
 
-We used Google Colab for computation-heavy tasks. The files are marked by the .ipynb-ending and can also be run in Jupyter Notebooks. Moreover, the files are labelled in the order of the working process.
+We used Google Colab for computation-heavy tasks. These files have an .ipynb-ending and can also be run in Jupyter Notebooks. Moreover, the files are labelled in the order of the working process.
 
 * 1_pdf-to-csv.ipynb: convert multiple raw pdf files to one single csv file. 
-* 2_label.ipynb: multi label one hot encoding process
-* 3_WPpreprocessing.py: cleaning function to remove stopwords, etc. 
+* 3_WPpreprocessing.py: simple preprocessing to remove punctuation, common and customized stopwords, etc. 
 * 3_contextualized_topic_modeling.ipynb: Deep Learning topic model training, validation and evaluation
-* 4_Visualization.ipynb: some visualization examples 
-* 5_topics_app.py: streamlit implementation 
+* 4_Visualization.ipynb: visualization of model output
+* 5_main_app.py: contains code for the streamlit web app  
 * Pipfile.lock and Pipfile: necessary components of the streamlit implementation 
 * data: final data for streamlit implementation
-* .old: old models, i.e. zero-shot topic model and DistilBert model
+* .old: bin folder for files that were created during research and exploration process, i.e. zero-shot topic model and DistilBERT model
 
 # Instruction
 
