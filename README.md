@@ -9,7 +9,7 @@ We used a Deep Learning topic model called [Contexualized Topic Model](https://g
 We used Google Colab for computation-heavy tasks. These files have an .ipynb-ending and can also be run in Jupyter Notebooks. Moreover, the files are labelled in the order of the working process.
 
 * 1_pdf-to-csv.ipynb: convert multiple raw pdf files to one single csv file. 
-* 3_WPpreprocessing.py: simple preprocessing to remove punctuation, common and customized stopwords, etc. 
+* 2_WPpreprocessing.py: simple preprocessing to remove punctuation, common and customized stopwords, etc. 
 * 3_contextualized_topic_modeling.ipynb: Deep Learning topic model training, validation and evaluation
 * 4_Visualization.ipynb: visualization of model output
 * 5_main_app.py: contains code for the streamlit web app  
