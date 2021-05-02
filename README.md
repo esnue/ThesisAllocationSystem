@@ -1,4 +1,4 @@
-# Thesis Allocation System for the Hertie School 
+# Supervisor Recommendation Tool for the Hertie School 
 
 This project's goal is to facilitate easier matching of thesis supervisors with students based on their thesis proposals. 
 
