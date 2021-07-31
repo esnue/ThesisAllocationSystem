@@ -7,6 +7,9 @@ import numpy as np
 import os
 import pandas as pd
 import itertools
+
+df = pd.read_csv("./data/train-label_wide.csv")
+
 # =============================================================================
 # Header and Options
 # =============================================================================
