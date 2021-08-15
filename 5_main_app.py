@@ -7,20 +7,23 @@ import numpy as np
 import os
 import pandas as pd
 import itertools
+import visuals as vis
 
-df = pd.read_csv("./data/train-label_wide.csv")
+df = pd.read_csv("./data/streamlit_data.csv")
 
 # =============================================================================
 # Header and Options
 # =============================================================================
 
-st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="Hertie Supervisor Tool") 
+st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="Hertie Supervisor Tool")
 
 # =============================================================================
 # About Page
 # =============================================================================
 
 def about():
+	#figure = vis.plot_topic('Topic0', df)
+	#st.pyplot(figure)
 
 	st.title("About this Tool")
 	st.write('''This is an app designed to help you match your research proposal with possible thesis supervisors by giving you a quick and easy overview over the wide range of academic expertise of supervisors at Hertie.
